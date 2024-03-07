@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: servicio-items
+  # Configuracion para mas adelante con el servidor de configuraciones con Spring Cloud Config. Versiones anteriores no era necesario pero ahora si.
+  #config:
+    #import: 'optional:configserver:'
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8002
+# configuracion de del circuit breaker con Resilience4j
+resilience4j:
+  circuitbreaker:
+    configs:
+      # "defecto" es el nombre asignado por nosotros a esta configuracion
+      defecto:
+      # Aca realizamos las configuraciones del circuit breaker
+      # Veremos propiedades, similares a los metodos  utilizados en el metodo "defaulCustomizer()" de la clase "RestTemplateConfig"
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 2s
+        
+    # Asignamos la configuracion "defecto" creado en el archivo actual al circuit breaker llamado "items" ubicado en el metodo "detalle()" de la clase "ItemController"
+    instances:  
+      items: # este es el mismo nombre del circuit breaker en el controlador
+        base-config: defecto # Este es el nombre creado mas arriba
+  # Tiempo máximo de espera(timeout) a 2 segundos. En el fondo "timelimiter" es como "circuitbreaker" ya que tiene su configuracion
+  timelimiter:
+    configs:
+    # "defecto" es el nombre que asignamos aqui, coincide con el de arriba, pero no es necesario que asi sea.
+      defecto:
+        timeout-duration: 2s
+    # Similar a lo configurado mas arriba, asignamos el "defecto" al circuit breaker "items" del controlador
+    instances:
+      items:
+        base-config: defecto
