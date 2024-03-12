@@ -2,8 +2,8 @@ spring:
   application:
     name: servicio-items
   # Configuracion para mas adelante con el servidor de configuraciones con Spring Cloud Config. Versiones anteriores no era necesario pero ahora si.
-  #config:
-    #import: 'optional:configserver:'
+  config:
+    import: 'optional:configserver:'
 eureka:
   client:
     service-url:

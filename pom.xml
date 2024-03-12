@@ -66,6 +66,17 @@
 			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 
+		<!-- Dependencia agregada manualmente, de config client. Para indicar que este microservicio items, 
+		sera un cliente del servidor de configuraciones -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-config</artifactId>		    
+		</dependency>
+		<!-- Dependencia que permite refrescar los componentes registrados en el "contenedor de spring" -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>		    
+		</dependency>
 
 	</dependencies>
 	<dependencyManagement>
