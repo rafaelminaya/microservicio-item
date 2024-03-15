@@ -7,7 +7,7 @@ public class Producto {
 	// ATRIBUTOS
 	private Long id;
 	private String nombre;
-	private double precio;
+	private Double precio;
 	private Date createAt;
 	private Integer port;
 
@@ -28,11 +28,11 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 

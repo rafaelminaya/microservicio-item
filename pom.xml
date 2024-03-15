@@ -77,7 +77,12 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>		    
 		</dependency>
-
+		<!-- Esta es la librería que proviene de nuestro proyecto "commons" -->
+		<dependency>
+			<groupId>com.formacionbdi.springboot.app.commons</groupId>
+			<artifactId>springboot-servicio-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
